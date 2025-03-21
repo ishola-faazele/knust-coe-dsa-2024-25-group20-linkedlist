@@ -1,7 +1,7 @@
 {
-  "name": "knust-coe-dsa-2024-25-group20-linkedlist",
+  "name": "knust-coe-linkedlist",
   "version": "1.0.0",
-  "description": "A simple TypeScript LinkedList library",
+  "description": "A TypeScript LinkedList implementation for KNUST COE DSA Group 20 (2024/25).",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
