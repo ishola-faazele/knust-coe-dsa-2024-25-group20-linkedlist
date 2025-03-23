@@ -30,7 +30,17 @@ var LinkedList = class _LinkedList {
    */
   static from(arrayLike, mapFn, thisArg) {
     const result = new _LinkedList();
-    if ("length" in arrayLike) {
+    if (typeof arrayLike === "string") {
+      const str = arrayLike;
+      for (let i = 0; i < str.length; i++) {
+        const value = str[i];
+        if (mapFn) {
+          result.push(mapFn.call(thisArg, value, i));
+        } else {
+          result.push(value);
+        }
+      }
+    } else if (arrayLike && typeof arrayLike === "object" && "length" in arrayLike) {
       for (let i = 0; i < arrayLike.length; i++) {
         const value = arrayLike[i];
         if (mapFn) {
@@ -39,7 +49,7 @@ var LinkedList = class _LinkedList {
           result.push(value);
         }
       }
-    } else if (Symbol.iterator in Object(arrayLike)) {
+    } else if (arrayLike && typeof arrayLike === "object" && Symbol.iterator in Object(arrayLike)) {
       let index = 0;
       for (const item of arrayLike) {
         if (mapFn) {
